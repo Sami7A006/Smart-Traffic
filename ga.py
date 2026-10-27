@@ -24,7 +24,7 @@ def optimize(counts, seed=None):
     rng = random.Random(seed)
     n = len(counts)
     pop = [[rng.randint(MIN_G, MAX_G) for _ in range(n)] for _ in range(POP)]
-    pop[0] = [_clamp(int(MIN_G + (MAX_G - MIN_G) * c / (MAX_VEH or 1))) for c in counts]  # heuristic seed
+    pop[0] = [_clamp(int(MIN_G + (MAX_G - MIN_G) * c / MAX_VEH)) for c in counts]  # heuristic seed
     for _ in range(GENS):
         pop.sort(key=lambda g: fitness(g, counts))
         nxt = [g[:] for g in pop[:ELITE]]

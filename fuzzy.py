@@ -3,10 +3,10 @@ from config import MAX_VEH
 
 
 def trap(x, a, b, c, d):
-    if x <= a or x >= d:
-        return 1.0 if (x == a == b) or (x == c == d) else 0.0
     if b <= x <= c:
         return 1.0
+    if x <= a or x >= d:
+        return 0.0
     return (x - a) / (b - a) if x < b else (d - x) / (d - c)
 
 
